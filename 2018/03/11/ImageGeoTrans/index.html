@@ -45,6 +45,38 @@
 
 
 
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Menlo:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
 
 
 
@@ -87,7 +119,7 @@
 <meta property="og:site_name" content="Syasusu&#39;s Blog">
 <meta property="og:description" content="本篇主要介绍仿射变换">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-11T15:28:43.533Z">
+<meta property="og:updated_time" content="2018-03-11T16:01:16.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图像的几何变换(1)">
 <meta name="twitter:description" content="本篇主要介绍仿射变换">
@@ -368,7 +400,7 @@
 <p>假设对空间坐标先等比例缩放2倍，然后在水平方向上平移100，在垂直方向上平移200，计算该仿射变换矩阵，代码如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">s = np.array([[<span class="number">0.5</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0.5</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>]])<span class="comment">#缩放矩阵</span></span><br><span class="line">t = np.array([[<span class="number">1</span>,<span class="number">0</span>,<span class="number">100</span>],[<span class="number">0</span>,<span class="number">1</span>,<span class="number">200</span>],[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>]])<span class="comment">#平移矩阵</span></span><br><span class="line">A = np.dot(t,s)<span class="comment">#矩阵相乘</span></span><br><span class="line"></span><br><span class="line">A</span><br><span class="line">array([[ <span class="number">0.5</span> , <span class="number">0.</span> , <span class="number">100.</span> ],</span><br><span class="line">        [ <span class="number">0.</span> , <span class="number">0.5</span> , <span class="number">200.</span> ],</span><br><span class="line">        [ <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">1.</span> ]])</span><br></pre></td></tr></table></figure>
 <p>类似的，如果以$(x_{0},y_{0})$为中心进行缩放变化，然后逆时针旋转α，则仿射变换矩阵为：</p>
-<p>$$<br>\left\{\begin{matrix}1 &amp; 0 &amp; x_{0} \\0 &amp; 1 &amp; y_{0} \\0 &amp; 0 &amp; 1\end{matrix}\right\}\left\{\left\{\begin{matrix}cosα &amp; sinα &amp; 0 \\-sinα &amp; cosα &amp; 0 \\0 &amp; 0 &amp; 1\end{matrix}\right\}\left\{\begin{matrix}s_{x} &amp; 0 &amp; 0 \0 &amp; s_{y} &amp; 0 \0 &amp; 0 &amp; 1\end{matrix}\right\}\right\}\left\{\begin{matrix}1 &amp; 0 &amp; -x_{0} \\0 &amp; 1 &amp; -y_{0} \\0 &amp; 0 &amp; 1\end{matrix}\right\}<br>$$</p>
+<p>$$<br>\left\{\begin{matrix}1 &amp; 0 &amp; x_{0} \\0 &amp; 1 &amp; y_{0} \\0 &amp; 0 &amp; 1\end{matrix}\right\}\left\{\left\{\begin{matrix}cosα &amp; sinα &amp; 0 \\-sinα &amp; cosα &amp; 0 \\0 &amp; 0 &amp; 1\end{matrix}\right\}\left\{\begin{matrix}s_{x} &amp; 0 &amp; 0 \\0 &amp; s_{y} &amp; 0 \\0 &amp; 0 &amp; 1\end{matrix}\right\}\right\}\left\{\begin{matrix}1 &amp; 0 &amp; -x_{0} \\0 &amp; 1 &amp; -y_{0} \\0 &amp; 0 &amp; 1\end{matrix}\right\}<br>$$</p>
 <p>整理后结果为：</p>
 <p>$$<br>A=\left\{\begin{matrix}s_{x}cosα &amp; s_{y}cosα &amp; (1-s_{x}cosα)x_{0}-s_{y}y_{0}sinα \\-s_{x}cosα &amp; s_{y}cosα &amp; (1-s_{y}cosα)y_{0}+s_{x}x_{0}sinα \\0 &amp; 0 &amp; 1\end{matrix}\right\}<br>$$</p>
 <p>如果还需平移，则只需将结果左乘一个平移仿射矩阵即可。</p>
