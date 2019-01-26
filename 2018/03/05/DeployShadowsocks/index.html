@@ -119,7 +119,7 @@
 <meta property="og:site_name" content="Syasusu&#39;s Blog">
 <meta property="og:description" content="每次搭ss都要上网查一下教程，但网上的教程都没有提到针对CentOS7下的防火墙的处理，这里便想自己写一篇留个档。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-06T14:34:55.479Z">
+<meta property="og:updated_time" content="2019-01-26T05:21:38.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 7下安装Shadowsocks 搭建ss">
 <meta name="twitter:description" content="每次搭ss都要上网查一下教程，但网上的教程都没有提到针对CentOS7下的防火墙的处理，这里便想自己写一篇留个档。">
@@ -374,15 +374,11 @@
 </ul>
 <p>ss的启动与停止都很简单</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssserver -c /etc/shadowsocks.json -d start <span class="comment">#启动</span></span><br><span class="line">$ ssserver -c /etc/shadowsocks.json -d stop <span class="comment">#停止</span></span><br></pre></td></tr></table></figure>
-<h3 id="解决CentOS7的防火墙问题"><a href="#解决CentOS7的防火墙问题" class="headerlink" title="解决CentOS7的防火墙问题"></a>解决CentOS7的防火墙问题</h3><p>CentOS 7默认使用的是firewall作为防火墙，这里我们将使用iptables</p>
-<p>在控制台中执行以下命令关闭及禁用firewall</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl stop firewalld.service <span class="comment">#停止firewall</span></span><br><span class="line"></span><br><span class="line">$ systemctl <span class="built_in">disable</span> firewalld.service <span class="comment">#禁止firewall开机启动</span></span><br></pre></td></tr></table></figure>
-<p>然后在控制台中执行以下命令安装iptables</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install iptables-services</span><br></pre></td></tr></table></figure>
-<p>然后执行以下命令开放端口</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp -dport 此处填端口号 -j ACCEPT</span><br></pre></td></tr></table></figure>
-<p>最后重启防火墙使配置生效并设置防火墙开机启动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl restart iptables.service</span><br><span class="line"></span><br><span class="line">$ systemctl <span class="built_in">enable</span> iptables.service</span><br></pre></td></tr></table></figure>
+<h3 id="解决CentOS7的防火墙问题"><a href="#解决CentOS7的防火墙问题" class="headerlink" title="解决CentOS7的防火墙问题"></a>解决CentOS7的防火墙问题</h3><p>CentOS 7默认使用的是firewall作为防火墙</p>
+<p>输入以下指令放行ss端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ firewall-cmd --permanent --add-port=8381/tcp</span><br><span class="line">$ firewall-cmd --permanent --add-port=8382/tcp</span><br><span class="line">$ firewall-cmd --permanent --add-port=8383/tcp</span><br><span class="line">$ firewall-cmd --permanent --add-port=8384/tcp</span><br></pre></td></tr></table></figure>
+<p>再重启firewall</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ firewall-cmd --reload</span><br></pre></td></tr></table></figure>
 <p>然后你就可以通过你的shadowsocks上网啦！</p>
 
       
