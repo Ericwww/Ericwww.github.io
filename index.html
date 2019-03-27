@@ -271,6 +271,127 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/03/27/Interview1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Syasusu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syasusu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/27/Interview1/" itemprop="url">阿里前端第一面</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T20:33:00+08:00">
+                2019-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天下午接到了阿里的面试电话，是一次严格意义上的技术面试了。虽然有提前通知过，我也认认真真地准备了一下，但有些方面还是答的不尽人意吧。</p>
+<p>面试的形式也挺有意思的，面试官通过询问我之前的学习经历，刷过的题，来提出一些问题。我挑了一个<code>JavaScript 使用循环语句查找通讯录</code>，这道题当时因为怎么都通过不了，去百度查了一样的题，代码也一模一样，但就是无法Accept。他让我口述一下要如何去实现这一功能。我的思路是用for循环，遍历数组，然后通过对象的相关的操作，找到要返回的联系人的指定信息。找不到则返回“找不到该联系人”等信息。<br>这里他问了一个<code>let</code>、<code>var</code>的问题，简单来说就是<code>var</code>定义的变量会提升到作用域的顶部，而<code>let</code>不会。<br>此外，他还问了<code>==</code>与<code>===</code>，对于<code>==</code>，如果双方类型不同，就会进行强制类型转换，而<code>===</code>是直接判断二者的类型和值是否相同。<br>还有，比如当我访问的对象的属性不存在时会返回<code>null</code>还是<code>undefined</code>【这里我好像回答错了呃啊！】然后问可以用什么来判断变量的类型，这个问题刚好前几天看书有看到，<code>typeof</code>与<code>instanceof</code>，<code>typeof</code>对于原始类型，除了<code>null</code>都可以显示正确类型，对于对象类型，除了函数都会显示<code>object</code>。所以<code>typeof</code>并不能准确判断变量类型。<br>然后他又问了<code>null</code>和<code>undefined</code>的关系。<code>null</code>和<code>undefined</code>都表示值的空缺，但二者并不等价，<code>undefined</code>的类型就是<code>undefined</code>，<code>null</code>可能用<code>typeof</code>输出的是对象，但其实也是js的一个bug，在早前，js为了性能使用低位存储变量的类型信息，<code>000</code>开头代表对象，而<code>null</code>对应的是全0，所以也会错误地判断为object。<br>然后我们聊到了我最近看的Vue.js做过的一个购物车实战练习。我给他讲解了我是如何给购物车加上复选框，并只计算选中商品的价格。<br>然后他问了除了<code>for (let i = 0; i &lt; this.list.length; i++)</code>这种类型的循环，还能用什么循环来遍历数组，我还以为是让我别用for，那用啥呀，while呀！后来想到是不是让我用<code>for xxx in xxxArray</code>这种形式。<br>后面是问我是怎么去获取实例中的数据还是啥，有点记不清了，反正我答的莫名其妙感觉。我只知道我那边是这么写<code>var item = this.list[i];</code>，我讲出来的时候还挺希望他问我<code>this</code>这个关键字的，因为前几天看书刚好看到过……<br>然后问我有什么方法可以去获取HTML中的DOM节点，利用原生JS获取DOM的节点，这个我只记得<code>document.getElementById</code>和<code>document.getElementsByClassName</code>，其实还有<code>getElementsByName</code>通过name属性、<code>getElementsByTagName</code>通过标签名、<code>querySelector</code>通过选择器获取一个元素、<code>querySelectorAll</code>通过选择器获取一组元素。然后问我通过<code>document.getElementById</code>得到会是一个什么类型的变量，我那时回答的是数组，因为我记得我以前用的时候后面会跟一个方框号去索引。聊完以后我自己打开控制台写了一下，返回的也的确是数组类型，长舒一口气……<br>此外的话还问了<code>break</code>、<code>continue</code>、<code>return</code>这三个会有什么功能，<code>break</code>会跳出循环，并执行循环之后的语句，<code>continue</code>会跳过循环内之后的语句，进入下一次循环，然后<code>return</code>我就回答的有点傻了，前后被他追问后把自己搞的自相矛盾了……<code>return</code>只能用在函数里，当遇到<code>return</code>后，会直接结束函数并返回值。<br>然后问了点数据结构相关的东西，用熟悉的语言描述一下怎么产生一个双链表，双链表怎么操作去替换中间的一个结点。由于这门课过去太久了，如何构造双链表的代码并不是记得很清，按着自己的思路大致的描述了一下。关于如何替换结点，思路也很清晰，先把新结点拉到链表里来，前后的关系都建立好，然后再把原阶段的前后指针指向空然后把内存释放掉。<br>然后他问了我的学习策略和学习路线。说实话这学期头也不回一脚扎进前端学东西，但并没有去仔细思考过自己到底要往那个技术栈发展，虽然很多人都吹嘘现在应该是全栈的时代了，但对个人而言也总得有个先后次序吧。小目标的话就是这学期能学完Vue.js以及另外一个前端框架，再看点Node.js，并找到一份相关的实习工作，在工作中进一步去学习，然后转行？创业？我尚不能想清楚，但未来该如何发展，是一个值得经常去思考的问题……<br>最后，技艺不精，甘拜下风，继续努力吧</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/03/11/TryBootstrap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -609,7 +730,7 @@
           <p>好久没写博客了，刚好趁这个机会记录一下我在贝法一个月的生活吧</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/23/OneMonthAtBelfast/#espandi" rel="contents">
+            <a class="btn" href="/2018/08/23/OneMonthAtBelfast/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -733,7 +854,7 @@
           <p>本篇主要介绍仿射变换</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/03/11/ImageGeoTrans/#espandi" rel="contents">
+            <a class="btn" href="/2018/03/11/ImageGeoTrans/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -857,7 +978,7 @@
           <p>每次搭ss都要上网查一下教程，但网上的教程都没有提到针对CentOS7下的防火墙的处理，这里便想自己写一篇留个档。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/03/05/DeployShadowsocks/#espandi" rel="contents">
+            <a class="btn" href="/2018/03/05/DeployShadowsocks/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -981,7 +1102,7 @@
           <p>近来做院创和新苗要用到OpenCV了，自己电脑装的是Python3.6，但是cv2得在Python2.7下跑，又懒得搞虚拟机，就搞了个双版本</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/02/05/py2736Together/#espandi" rel="contents">
+            <a class="btn" href="/2018/02/05/py2736Together/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1105,7 +1226,7 @@
           <p>今天在写三位一体计算器的时候想将footer绝对置底，以我仅有的CSS知识写了半天无果，便上网搜了一下，找到了知乎专栏的一篇文章解决了我的问题，便来记录一下。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/29/FooterBottom/#espandi" rel="contents">
+            <a class="btn" href="/2018/01/29/FooterBottom/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1229,7 +1350,7 @@
           <p>　　前几天在微博上看到三色绘恋有线下活动，我刚好买了周边，就报名了，并立下flag，“抽到我，我就去！”。结果没想到真的抽到我了，那就去咯！<del>期末考？考试周？我不知道你在说什么。</del></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/13/TricolourLovestoryOfflineRepo/#espandi" rel="contents">
+            <a class="btn" href="/2018/01/13/TricolourLovestoryOfflineRepo/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1354,131 +1475,7 @@
 <p>下图为原Blog的遗照(它现在还苟延残喘在我本地的WampServer上)</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/29/BuildBlogWithHexo/#espandi" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2017/11/02/Codewars1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/02/Codewars1/" itemprop="url">Codewars：The Supermarket Queue</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T23:50:00+08:00">
-                2017-11-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>有段时间沉迷在codewars刷题，现在趁着有博客了把这道题记录下来<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/02/Codewars1/#espandi" rel="contents">
+            <a class="btn" href="/2017/12/29/BuildBlogWithHexo/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1519,6 +1516,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1566,7 +1567,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
