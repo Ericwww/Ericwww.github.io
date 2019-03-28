@@ -111,18 +111,18 @@
 
 
 
-<meta name="description" content="今天下午接到了阿里的面试电话，是一次严格意义上的技术面试了。虽然有提前通知过，我也认认真真地准备了一下，但有些方面还是答的不尽人意吧。 面试的形式也挺有意思的，面试官通过询问我之前的学习经历，刷过的题，来提出一些问题。我挑了一个JavaScript 使用循环语句查找通讯录，这道题当时因为怎么都通过不了，去百度查了一样的题，代码也一模一样，但就是无法Accept。他让我口述一下要如何去实现这一功能。">
+<meta name="description" content="今天下午接到了阿里的面试电话，是一次严格意义上的技术面试了。虽然有提前通知过，我也认认真真地准备了一下，但有些方面还是答的不尽人意吧。 好了下面的不用看了，已经被拒了【2019.3.28】 面试的形式也挺有意思的，面试官通过询问我之前的学习经历，刷过的题，来提出一些问题。我挑了一个JavaScript 使用循环语句查找通讯录，这道题当时因为怎么都通过不了，去百度查了一样的题，代码也一模一样，但就是">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里前端第一面">
 <meta property="og:url" content="https://ericwww.github.io/2019/03/27/Interview1/index.html">
 <meta property="og:site_name" content="Syasusu&#39;s Blog">
-<meta property="og:description" content="今天下午接到了阿里的面试电话，是一次严格意义上的技术面试了。虽然有提前通知过，我也认认真真地准备了一下，但有些方面还是答的不尽人意吧。 面试的形式也挺有意思的，面试官通过询问我之前的学习经历，刷过的题，来提出一些问题。我挑了一个JavaScript 使用循环语句查找通讯录，这道题当时因为怎么都通过不了，去百度查了一样的题，代码也一模一样，但就是无法Accept。他让我口述一下要如何去实现这一功能。">
+<meta property="og:description" content="今天下午接到了阿里的面试电话，是一次严格意义上的技术面试了。虽然有提前通知过，我也认认真真地准备了一下，但有些方面还是答的不尽人意吧。 好了下面的不用看了，已经被拒了【2019.3.28】 面试的形式也挺有意思的，面试官通过询问我之前的学习经历，刷过的题，来提出一些问题。我挑了一个JavaScript 使用循环语句查找通讯录，这道题当时因为怎么都通过不了，去百度查了一样的题，代码也一模一样，但就是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-27T16:15:05.895Z">
+<meta property="og:updated_time" content="2019-03-28T10:35:39.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里前端第一面">
-<meta name="twitter:description" content="今天下午接到了阿里的面试电话，是一次严格意义上的技术面试了。虽然有提前通知过，我也认认真真地准备了一下，但有些方面还是答的不尽人意吧。 面试的形式也挺有意思的，面试官通过询问我之前的学习经历，刷过的题，来提出一些问题。我挑了一个JavaScript 使用循环语句查找通讯录，这道题当时因为怎么都通过不了，去百度查了一样的题，代码也一模一样，但就是无法Accept。他让我口述一下要如何去实现这一功能。">
+<meta name="twitter:description" content="今天下午接到了阿里的面试电话，是一次严格意义上的技术面试了。虽然有提前通知过，我也认认真真地准备了一下，但有些方面还是答的不尽人意吧。 好了下面的不用看了，已经被拒了【2019.3.28】 面试的形式也挺有意思的，面试官通过询问我之前的学习经历，刷过的题，来提出一些问题。我挑了一个JavaScript 使用循环语句查找通讯录，这道题当时因为怎么都通过不了，去百度查了一样的题，代码也一模一样，但就是">
 
 
 
@@ -358,6 +358,7 @@
 
       
         <p>今天下午接到了阿里的面试电话，是一次严格意义上的技术面试了。虽然有提前通知过，我也认认真真地准备了一下，但有些方面还是答的不尽人意吧。</p>
+<p><del>好了下面的不用看了，已经被拒了【2019.3.28】</del></p>
 <p>面试的形式也挺有意思的，面试官通过询问我之前的学习经历，刷过的题，来提出一些问题。我挑了一个<code>JavaScript 使用循环语句查找通讯录</code>，这道题当时因为怎么都通过不了，去百度查了一样的题，代码也一模一样，但就是无法Accept。他让我口述一下要如何去实现这一功能。我的思路是用for循环，遍历数组，然后通过对象的相关的操作，找到要返回的联系人的指定信息。找不到则返回“找不到该联系人”等信息。<br>这里他问了一个<code>let</code>、<code>var</code>的问题，简单来说就是<code>var</code>定义的变量会提升到作用域的顶部，而<code>let</code>不会。<br>此外，他还问了<code>==</code>与<code>===</code>，对于<code>==</code>，如果双方类型不同，就会进行强制类型转换，而<code>===</code>是直接判断二者的类型和值是否相同。<br>还有，比如当我访问的对象的属性不存在时会返回<code>null</code>还是<code>undefined</code>【这里我好像回答错了呃啊！】然后问可以用什么来判断变量的类型，这个问题刚好前几天看书有看到，<code>typeof</code>与<code>instanceof</code>，<code>typeof</code>对于原始类型，除了<code>null</code>都可以显示正确类型，对于对象类型，除了函数都会显示<code>object</code>。所以<code>typeof</code>并不能准确判断变量类型。<br>然后他又问了<code>null</code>和<code>undefined</code>的关系。<code>null</code>和<code>undefined</code>都表示值的空缺，但二者并不等价，<code>undefined</code>的类型就是<code>undefined</code>，<code>null</code>可能用<code>typeof</code>输出的是对象，但其实也是js的一个bug，在早前，js为了性能使用低位存储变量的类型信息，<code>000</code>开头代表对象，而<code>null</code>对应的是全0，所以也会错误地判断为object。<br>然后我们聊到了我最近看的Vue.js做过的一个购物车实战练习。我给他讲解了我是如何给购物车加上复选框，并只计算选中商品的价格。<br>然后他问了除了<code>for (let i = 0; i &lt; this.list.length; i++)</code>这种类型的循环，还能用什么循环来遍历数组，我还以为是让我别用for，那用啥呀，while呀！后来想到是不是让我用<code>for xxx in xxxArray</code>这种形式。<br>后面是问我是怎么去获取实例中的数据还是啥，有点记不清了，反正我答的莫名其妙感觉。我只知道我那边是这么写<code>var item = this.list[i];</code>，我讲出来的时候还挺希望他问我<code>this</code>这个关键字的，因为前几天看书刚好看到过……<br>然后问我有什么方法可以去获取HTML中的DOM节点，利用原生JS获取DOM的节点，这个我只记得<code>document.getElementById</code>和<code>document.getElementsByClassName</code>，其实还有<code>getElementsByName</code>通过name属性、<code>getElementsByTagName</code>通过标签名、<code>querySelector</code>通过选择器获取一个元素、<code>querySelectorAll</code>通过选择器获取一组元素。然后问我通过<code>document.getElementById</code>得到会是一个什么类型的变量，我那时回答的是数组，因为我记得我以前用的时候后面会跟一个方框号去索引。聊完以后我自己打开控制台写了一下，返回的也的确是数组类型，长舒一口气……<br>此外的话还问了<code>break</code>、<code>continue</code>、<code>return</code>这三个会有什么功能，<code>break</code>会跳出循环，并执行循环之后的语句，<code>continue</code>会跳过循环内之后的语句，进入下一次循环，然后<code>return</code>我就回答的有点傻了，前后被他追问后把自己搞的自相矛盾了……<code>return</code>只能用在函数里，当遇到<code>return</code>后，会直接结束函数并返回值。<br>然后问了点数据结构相关的东西，用熟悉的语言描述一下怎么产生一个双链表，双链表怎么操作去替换中间的一个结点。由于这门课过去太久了，如何构造双链表的代码并不是记得很清，按着自己的思路大致的描述了一下。关于如何替换结点，思路也很清晰，先把新结点拉到链表里来，前后的关系都建立好，然后再把原阶段的前后指针指向空然后把内存释放掉。<br>然后他问了我的学习策略和学习路线。说实话这学期头也不回一脚扎进前端学东西，但并没有去仔细思考过自己到底要往那个技术栈发展，虽然很多人都吹嘘现在应该是全栈的时代了，但对个人而言也总得有个先后次序吧。小目标的话就是这学期能学完Vue.js以及另外一个前端框架，再看点Node.js，并找到一份相关的实习工作，在工作中进一步去学习，然后转行？创业？我尚不能想清楚，但未来该如何发展，是一个值得经常去思考的问题……<br>最后，技艺不精，甘拜下风，继续努力吧</p>
 
       
