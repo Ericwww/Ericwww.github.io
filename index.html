@@ -342,7 +342,25 @@
       
         
           
-            <p>这几天在学姐那边跟着学前端，基本都还是写一个界面为主，在写CSS的时候就碰到了行内元素和块元素这两个知识点，这里做个整理，方便以后回顾。</p>
+            <p>这几天在学长学姐的一个公司那边跟着学前端，基本都还是写一个界面为主，在写CSS的时候就碰到了行内元素和块元素这两个知识点，这里做个整理，方便以后回顾。</p>
+<h2 id="行内元素（inline）"><a href="#行内元素（inline）" class="headerlink" title="行内元素（inline）"></a>行内元素（inline）</h2><blockquote>
+<p>内容决定所占空间的多少，内容多少就占多少空间<br>不能换行<br>不能设置宽高（默认宽高是0）<br>margin垂直方向无效（margin-top,margin-bottom）,若设置垂直方向用line-height属性<br>当多个行内元素排列在一起，他们之间会出现空格</p>
+</blockquote>
+<h4 id="常见行内元素有"><a href="#常见行内元素有" class="headerlink" title="常见行内元素有"></a>常见行内元素有</h4><blockquote>
+<p><code>a</code>  <code>buttun</code> <code>span</code> <code>input</code> <code>label</code> 等，具体可查阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elemente#Elements" target="_blank" rel="noopener">行内元素</a></p>
+</blockquote>
+<h2 id="块级元素（block）"><a href="#块级元素（block）" class="headerlink" title="块级元素（block）"></a>块级元素（block）</h2><blockquote>
+<p>不管内容多少，块元素都会在浏览器中独占一行，即有多个块元素时，会从上至下排列<br>可设置宽高，如果不设置宽高那么它的宽度是100%，即占满父级元素一整行<br>相邻外边距会重叠，比如margin-bottom和margin-top重叠（可用padding或border解决）</p>
+</blockquote>
+<h4 id="常见的块级元素有"><a href="#常见的块级元素有" class="headerlink" title="常见的块级元素有"></a>常见的块级元素有</h4><blockquote>
+<p><code>div</code> <code>h1-h6</code> <code>p</code> <code>ul</code> <code>li</code> 等，具体可查阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Block-level_elements" target="_blank" rel="noopener">块级元素</a></p>
+</blockquote>
+<h2 id="行内块元素（inline-block）"><a href="#行内块元素（inline-block）" class="headerlink" title="行内块元素（inline-block）"></a>行内块元素（inline-block）</h2><blockquote>
+<p>行内块状元素综合了行内元素和块状元素的特性，但是各有取舍。因此行内块状元素在日常的使用中，由于其特性，使用的次数也比较多。<br>不自动换行<br>能够识别宽高<br>默认排列方式为从左到右</p>
+</blockquote>
+<p>我们可以通过设置display的属性，来操纵一个元素是哪类元素。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:inline</span>;</span><br><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:block</span>;</span><br><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:inline-block</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="相关属性的适用性"><a href="#相关属性的适用性" class="headerlink" title="相关属性的适用性"></a>相关属性的适用性</h2><p>text-align：此属性在水平方向上对行内（inline），行内块（inline-block）以及文字都起作用（行内元素或行内块元素设置水平居中用text-align属性）<br>line-height：此属性可对行内元素设置垂直居中，使line-height和height相等即可<br>vertical-align：此属性可对行内块设置垂直居中</p>
+<p>对块元素的水平和垂直布局，我现在更偏向于使用flex布局（躺）</p>
 
           
         
