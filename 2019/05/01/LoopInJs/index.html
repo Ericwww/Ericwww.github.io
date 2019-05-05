@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Syasusu&#39;s Blog">
 <meta property="og:description" content="前一个相对定位和绝对定位的坑还没动笔，然后昨天自己整理了一下js里的循环 do-while语句后测试循环语句，只有在循环体中的代码执行之后，才会测试出口条件，即无论如何，循环体中的代码都会执行一次。 123do&amp;#123;    statement&amp;#125;while(expression); while语句前测试循环语句，在循环体内的代码初执行之前，就会对出口条件求值 1while(expre">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T05:27:11.736Z">
+<meta property="og:updated_time" content="2019-05-05T05:52:42.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js中的循环与遍历">
 <meta name="twitter:description" content="前一个相对定位和绝对定位的坑还没动笔，然后昨天自己整理了一下js里的循环 do-while语句后测试循环语句，只有在循环体中的代码执行之后，才会测试出口条件，即无论如何，循环体中的代码都会执行一次。 123do&amp;#123;    statement&amp;#125;while(expression); while语句前测试循环语句，在循环体内的代码初执行之前，就会对出口条件求值 1while(expre">
@@ -375,7 +375,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-05 13:27:11" itemprop="dateModified" datetime="2019-05-05T13:27:11+08:00">2019-05-05</time>
+                <time title="修改时间：2019-05-05 13:52:42" itemprop="dateModified" datetime="2019-05-05T13:52:42+08:00">2019-05-05</time>
               
             
           </span>
@@ -438,6 +438,20 @@
 <h3 id="for-of语句"><a href="#for-of语句" class="headerlink" title="for-of语句"></a>for-of语句</h3><p>在可迭代对象上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值，执行语句。</p>
 <h4 id="for-in与for-of"><a href="#for-in与for-of" class="headerlink" title="for-in与for-of"></a>for-in与for-of</h4><p>for-in语句以原始插入顺序迭代对象的可枚举属性，for-of语句遍历可迭代对象定义要迭代的数据。</p>
 <p>使用for-in会遍历数组所有可枚举属性，包括原型。而for-of适用于遍历数组对象、字符串、map、set等拥有迭代器对象的集合。</p>
+<h3 id="forEach方法"><a href="#forEach方法" class="headerlink" title="forEach方法"></a>forEach方法</h3><p>该方法属于引用类型Array的一个迭代方法</p>
+<p>语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(callback [, thisArg]);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>callback:为数组中每个元素执行的函数，该函数接收三个参数<ul>
+<li>currentValue:数组中正在处理的当前元素</li>
+<li>index:数组中正在处理的当前元素的索引</li>
+<li>array:<code>forEach()</code>正在操作的数组</li>
+</ul>
+</li>
+<li>thisArg:可选参数，当执行回调函数时，用作<code>this</code>的值</li>
+</ul>
+</blockquote>
 
       
     </div>
@@ -713,7 +727,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#do-while语句"><span class="nav-number">1.</span> <span class="nav-text">do-while语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while语句"><span class="nav-number">2.</span> <span class="nav-text">while语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for语句"><span class="nav-number">3.</span> <span class="nav-text">for语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in语句"><span class="nav-number">4.</span> <span class="nav-text">for-in语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-of语句"><span class="nav-number">5.</span> <span class="nav-text">for-of语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for-in与for-of"><span class="nav-number">5.1.</span> <span class="nav-text">for-in与for-of</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#do-while语句"><span class="nav-number">1.</span> <span class="nav-text">do-while语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while语句"><span class="nav-number">2.</span> <span class="nav-text">while语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for语句"><span class="nav-number">3.</span> <span class="nav-text">for语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in语句"><span class="nav-number">4.</span> <span class="nav-text">for-in语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-of语句"><span class="nav-number">5.</span> <span class="nav-text">for-of语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for-in与for-of"><span class="nav-number">5.1.</span> <span class="nav-text">for-in与for-of</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forEach方法"><span class="nav-number">6.</span> <span class="nav-text">forEach方法</span></a></li></ol></div>
             
 
           </div>
