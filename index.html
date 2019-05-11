@@ -311,6 +311,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/05/11/ArrayInJs/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/uploads/avatar.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syasusu's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/11/ArrayInJs/" class="post-title-link" itemprop="url">JavaScript中的引用类型Array</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-11 09:47:00 / 修改时间：10:28:43" itemprop="dateCreated datePublished" datetime="2019-05-11T09:47:00+08:00">2019-05-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>js数组的每一项可以保存任何类型的数据。也就是说，可以用数组的第一个位置来保存字符串，第二个位置来保存数组，用第三个位置保存对象。并且，数组的大小是可以动态调整的。</p>
+<p>创建数组的基本方式有两种。第一种是使用Array构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>();</span><br></pre></td></tr></table></figure>
+<p>若预先知道数组要保存的项目的数量，也可给构造函数传递Length的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+<p>也可以向Array函数传递数组中应该包含的项</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>);</span><br></pre></td></tr></table></figure>
+<p>当然，给构造函数传递一个值，也可以创建数组，但情况会比较复杂。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>); <span class="comment">//创建一个长度为3的空数组</span></span><br><span class="line"><span class="keyword">var</span> names=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"grey"</span>);</span><br></pre></td></tr></table></figure>
+<p>第二种方法是使用数组字面量表示法，数组字面量由一对包含数组项的方括号去表示，多个数组项之间以逗号隔开。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>[<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>];</span><br><span class="line"><span class="keyword">var</span> names=[];</span><br><span class="line"><span class="keyword">var</span> values=[<span class="number">1</span>,<span class="number">2</span>,] <span class="comment">//Don't do this 这样会创建一个2或3项的数组</span></span><br><span class="line"><span class="keyword">var</span> options=[,,,,,] <span class="comment">//Don't do this 这样会创建一个5或6项的数组</span></span><br></pre></td></tr></table></figure>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h4><h5 id="栈方法"><a href="#栈方法" class="headerlink" title="栈方法"></a>栈方法</h5><p>数组可以表现得像栈一样。栈是一种LIFO（Last-In-First-Out）的数据结构。栈中项的插入和移除只发生在一个位置——栈的顶部。</p>
+<p>push()方法可以接收任意数量的参数，把它们逐个添加到数组的末尾，并返回修改后的数组的长度。<br>pop()方法则从数组末尾移除最后一项，减少数组Length的值，然后返回移除的项。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> count=colors.push(<span class="string">"red"</span>,<span class="string">"green"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(count);</span><br><span class="line">count=colors.push(<span class="string">"black"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(count);</span><br><span class="line"><span class="keyword">var</span> item=colors.pop();</span><br><span class="line"><span class="built_in">console</span>.log(item);</span><br><span class="line"><span class="built_in">console</span>.log(colors.length);</span><br></pre></td></tr></table></figure>
+<h5 id="队列方法"><a href="#队列方法" class="headerlink" title="队列方法"></a>队列方法</h5><p>栈数据结构的访问规则是LIFO。而队列数据结构的访问规则是FIFO（First-In-First-Out）。队列在列表末端添加项，从列表的前端移除项。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/05/06/VueLifecycle/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1778,167 +1935,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2018/03/05/DeployShadowsocks/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/05/DeployShadowsocks/" class="post-title-link" itemprop="url">CentOS 7下安装Shadowsocks 搭建ss</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-05 21:36:00" itemprop="dateCreated datePublished" datetime="2018-03-05T21:36:00+08:00">2018-03-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-26 13:21:40" itemprop="dateModified" datetime="2019-01-26T13:21:40+08:00">2019-01-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>每次搭ss都要上网查一下教程，但网上的教程都没有提到针对CentOS7下的防火墙的处理，这里便想自己写一篇留个档。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/03/05/DeployShadowsocks/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1989,7 +1985,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2327,9 +2323,9 @@
       
     
       
-        
-      
     
+      
+        
       
     
   

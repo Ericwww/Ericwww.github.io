@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="这几天在学长学姐的一个公司那边跟着学前端，基本都还是写一个界面为主，在写CSS的时候就碰到了行内元素和块元素这两个知识点，这里做个整理，方便以后回顾。 行内元素（inline） 内容决定所占空间的多少，内容多少就占多少空间不能换行不能设置宽高（默认宽高是0）margin垂直方向无效（margin-top,margin-bottom）,若设置垂直方向用line-height属性当多个行内元素排列在一">
+  <meta name="description" content="js数组的每一项可以保存任何类型的数据。也就是说，可以用数组的第一个位置来保存字符串，第二个位置来保存数组，用第三个位置保存对象。并且，数组的大小是可以动态调整的。 创建数组的基本方式有两种。第一种是使用Array构造函数 1var colors=new Array(); 若预先知道数组要保存的项目的数量，也可给构造函数传递Length的值。 1var colors=new Array(20);">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="行内元素和块元素">
-<meta property="og:url" content="https://ericwww.github.io/2019/04/15/InlineAndBlock/index.html">
+<meta property="og:title" content="JavaScript中的引用类型Array">
+<meta property="og:url" content="https://ericwww.github.io/2019/05/11/ArrayInJs/index.html">
 <meta property="og:site_name" content="Syasusu&#39;s Blog">
-<meta property="og:description" content="这几天在学长学姐的一个公司那边跟着学前端，基本都还是写一个界面为主，在写CSS的时候就碰到了行内元素和块元素这两个知识点，这里做个整理，方便以后回顾。 行内元素（inline） 内容决定所占空间的多少，内容多少就占多少空间不能换行不能设置宽高（默认宽高是0）margin垂直方向无效（margin-top,margin-bottom）,若设置垂直方向用line-height属性当多个行内元素排列在一">
+<meta property="og:description" content="js数组的每一项可以保存任何类型的数据。也就是说，可以用数组的第一个位置来保存字符串，第二个位置来保存数组，用第三个位置保存对象。并且，数组的大小是可以动态调整的。 创建数组的基本方式有两种。第一种是使用Array构造函数 1var colors=new Array(); 若预先知道数组要保存的项目的数量，也可给构造函数传递Length的值。 1var colors=new Array(20);">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-01T03:00:40.374Z">
+<meta property="og:updated_time" content="2019-05-11T02:28:43.884Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="行内元素和块元素">
-<meta name="twitter:description" content="这几天在学长学姐的一个公司那边跟着学前端，基本都还是写一个界面为主，在写CSS的时候就碰到了行内元素和块元素这两个知识点，这里做个整理，方便以后回顾。 行内元素（inline） 内容决定所占空间的多少，内容多少就占多少空间不能换行不能设置宽高（默认宽高是0）margin垂直方向无效（margin-top,margin-bottom）,若设置垂直方向用line-height属性当多个行内元素排列在一">
+<meta name="twitter:title" content="JavaScript中的引用类型Array">
+<meta name="twitter:description" content="js数组的每一项可以保存任何类型的数据。也就是说，可以用数组的第一个位置来保存字符串，第二个位置来保存数组，用第三个位置保存对象。并且，数组的大小是可以动态调整的。 创建数组的基本方式有两种。第一种是使用Array构造函数 1var colors=new Array(); 若预先知道数组要保存的项目的数量，也可给构造函数传递Length的值。 1var colors=new Array(20);">
 
 
 
@@ -119,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="https://ericwww.github.io/2019/04/15/InlineAndBlock/"/>
+  <link rel="canonical" href="https://ericwww.github.io/2019/05/11/ArrayInJs/"/>
 
 
 
@@ -129,7 +129,7 @@
   };
 </script>
 
-  <title>行内元素和块元素 | Syasusu's Blog</title>
+  <title>JavaScript中的引用类型Array | Syasusu's Blog</title>
   
 
 
@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/04/15/InlineAndBlock/"/>
+    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/05/11/ArrayInJs/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Syasusu"/>
@@ -332,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">行内元素和块元素
+          <h1 class="post-title" itemprop="name headline">JavaScript中的引用类型Array
 
               
             
@@ -358,24 +358,12 @@
                 
               
 
-              <time title="创建时间：2019-04-15 23:20:00" itemprop="dateCreated datePublished" datetime="2019-04-15T23:20:00+08:00">2019-04-15</time>
+              <time title="创建时间：2019-05-11 09:47:00 / 修改时间：10:28:43" itemprop="dateCreated datePublished" datetime="2019-05-11T09:47:00+08:00">2019-05-11</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-01 11:00:40" itemprop="dateModified" datetime="2019-05-01T11:00:40+08:00">2019-05-01</time>
               
             
           </span>
@@ -417,25 +405,21 @@
       
 
       
-        <p>这几天在学长学姐的一个公司那边跟着学前端，基本都还是写一个界面为主，在写CSS的时候就碰到了行内元素和块元素这两个知识点，这里做个整理，方便以后回顾。</p>
-<h2 id="行内元素（inline）"><a href="#行内元素（inline）" class="headerlink" title="行内元素（inline）"></a>行内元素（inline）</h2><blockquote>
-<p>内容决定所占空间的多少，内容多少就占多少空间<br>不能换行<br>不能设置宽高（默认宽高是0）<br>margin垂直方向无效（margin-top,margin-bottom）,若设置垂直方向用line-height属性<br>当多个行内元素排列在一起，他们之间会出现空格</p>
-</blockquote>
-<h4 id="常见行内元素有"><a href="#常见行内元素有" class="headerlink" title="常见行内元素有"></a>常见行内元素有</h4><blockquote>
-<p><code>a</code>  <code>buttun</code> <code>span</code> <code>input</code> <code>label</code> 等，具体可查阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Inline_elemente#Elements" target="_blank" rel="noopener">行内元素</a></p>
-</blockquote>
-<h2 id="块级元素（block）"><a href="#块级元素（block）" class="headerlink" title="块级元素（block）"></a>块级元素（block）</h2><blockquote>
-<p>不管内容多少，块元素都会在浏览器中独占一行，即有多个块元素时，会从上至下排列<br>可设置宽高，如果不设置宽高那么它的宽度是100%，即占满父级元素一整行<br>相邻外边距会重叠，比如margin-bottom和margin-top重叠（可用padding或border解决）</p>
-</blockquote>
-<h4 id="常见的块级元素有"><a href="#常见的块级元素有" class="headerlink" title="常见的块级元素有"></a>常见的块级元素有</h4><blockquote>
-<p><code>div</code> <code>h1-h6</code> <code>p</code> <code>ul</code> <code>li</code> 等，具体可查阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Block-level_elements" target="_blank" rel="noopener">块级元素</a></p>
-</blockquote>
-<h2 id="行内块元素（inline-block）"><a href="#行内块元素（inline-block）" class="headerlink" title="行内块元素（inline-block）"></a>行内块元素（inline-block）</h2><blockquote>
-<p>行内块状元素综合了行内元素和块状元素的特性，但是各有取舍。因此行内块状元素在日常的使用中，由于其特性，使用的次数也比较多。<br>不自动换行<br>能够识别宽高<br>默认排列方式为从左到右</p>
-</blockquote>
-<p>我们可以通过设置display的属性，来操纵一个元素是哪类元素。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:inline</span>;</span><br><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:block</span>;</span><br><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:inline-block</span>;</span><br></pre></td></tr></table></figure></p>
-<h2 id="相关属性的适用性"><a href="#相关属性的适用性" class="headerlink" title="相关属性的适用性"></a>相关属性的适用性</h2><p>text-align：此属性在水平方向上对行内（inline），行内块（inline-block）以及文字都起作用（行内元素或行内块元素设置水平居中用text-align属性）<br>line-height：此属性可对行内元素设置垂直居中，使line-height和height相等即可<br>vertical-align：此属性可对行内块设置垂直居中</p>
-<p>对块元素的水平和垂直布局，我现在更偏向于使用flex布局（躺）</p>
+        <p>js数组的每一项可以保存任何类型的数据。也就是说，可以用数组的第一个位置来保存字符串，第二个位置来保存数组，用第三个位置保存对象。并且，数组的大小是可以动态调整的。</p>
+<p>创建数组的基本方式有两种。第一种是使用Array构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>();</span><br></pre></td></tr></table></figure>
+<p>若预先知道数组要保存的项目的数量，也可给构造函数传递Length的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+<p>也可以向Array函数传递数组中应该包含的项</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>);</span><br></pre></td></tr></table></figure>
+<p>当然，给构造函数传递一个值，也可以创建数组，但情况会比较复杂。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>); <span class="comment">//创建一个长度为3的空数组</span></span><br><span class="line"><span class="keyword">var</span> names=<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"grey"</span>);</span><br></pre></td></tr></table></figure>
+<p>第二种方法是使用数组字面量表示法，数组字面量由一对包含数组项的方括号去表示，多个数组项之间以逗号隔开。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>[<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>];</span><br><span class="line"><span class="keyword">var</span> names=[];</span><br><span class="line"><span class="keyword">var</span> values=[<span class="number">1</span>,<span class="number">2</span>,] <span class="comment">//Don't do this 这样会创建一个2或3项的数组</span></span><br><span class="line"><span class="keyword">var</span> options=[,,,,,] <span class="comment">//Don't do this 这样会创建一个5或6项的数组</span></span><br></pre></td></tr></table></figure>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h4><h5 id="栈方法"><a href="#栈方法" class="headerlink" title="栈方法"></a>栈方法</h5><p>数组可以表现得像栈一样。栈是一种LIFO（Last-In-First-Out）的数据结构。栈中项的插入和移除只发生在一个位置——栈的顶部。</p>
+<p>push()方法可以接收任意数量的参数，把它们逐个添加到数组的末尾，并返回修改后的数组的长度。<br>pop()方法则从数组末尾移除最后一项，减少数组Length的值，然后返回移除的项。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=<span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> count=colors.push(<span class="string">"red"</span>,<span class="string">"green"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(count);</span><br><span class="line">count=colors.push(<span class="string">"black"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(count);</span><br><span class="line"><span class="keyword">var</span> item=colors.pop();</span><br><span class="line"><span class="built_in">console</span>.log(item);</span><br><span class="line"><span class="built_in">console</span>.log(colors.length);</span><br></pre></td></tr></table></figure>
+<h5 id="队列方法"><a href="#队列方法" class="headerlink" title="队列方法"></a>队列方法</h5><p>栈数据结构的访问规则是LIFO。而队列数据结构的访问规则是FIFO（First-In-First-Out）。队列在列表末端添加项，从列表的前端移除项。</p>
 
       
     </div>
@@ -493,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/30/Interview1/" rel="next" title="阿里前端面试所感">
-                <i class="fa fa-chevron-left"></i> 阿里前端面试所感
+              <a href="/2019/05/06/VueLifecycle/" rel="next" title="vue的生命周期">
+                <i class="fa fa-chevron-left"></i> vue的生命周期
               </a>
             
           </div>
@@ -502,10 +486,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/29/AbsoluteAndRelative/" rel="prev" title="绝对定位和相对定位">
-                绝对定位和相对定位 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -715,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#行内元素（inline）"><span class="nav-number">1.</span> <span class="nav-text">行内元素（inline）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见行内元素有"><span class="nav-number">1.0.1.</span> <span class="nav-text">常见行内元素有</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#块级元素（block）"><span class="nav-number">2.</span> <span class="nav-text">块级元素（block）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的块级元素有"><span class="nav-number">2.0.1.</span> <span class="nav-text">常见的块级元素有</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行内块元素（inline-block）"><span class="nav-number">3.</span> <span class="nav-text">行内块元素（inline-block）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关属性的适用性"><span class="nav-number">4.</span> <span class="nav-text">相关属性的适用性</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#转换方法"><span class="nav-number">1.1.</span> <span class="nav-text">转换方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#栈方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">栈方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#队列方法"><span class="nav-number">1.1.2.</span> <span class="nav-text">队列方法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
