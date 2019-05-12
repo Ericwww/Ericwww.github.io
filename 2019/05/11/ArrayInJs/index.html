@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Syasusu&#39;s Blog">
 <meta property="og:description" content="js数组的每一项可以保存任何类型的数据。也就是说，可以用数组的第一个位置来保存字符串，第二个位置来保存数组，用第三个位置保存对象。并且，数组的大小是可以动态调整的。 创建数组的基本方式有两种。第一种是使用Array构造函数 1var colors=new Array(); 若预先知道数组要保存的项目的数量，也可给构造函数传递Length的值。 1var colors=new Array(20);">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-11T06:37:40.585Z">
+<meta property="og:updated_time" content="2019-05-12T06:30:11.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的引用类型Array">
 <meta name="twitter:description" content="js数组的每一项可以保存任何类型的数据。也就是说，可以用数组的第一个位置来保存字符串，第二个位置来保存数组，用第三个位置保存对象。并且，数组的大小是可以动态调整的。 创建数组的基本方式有两种。第一种是使用Array构造函数 1var colors=new Array(); 若预先知道数组要保存的项目的数量，也可给构造函数传递Length的值。 1var colors=new Array(20);">
@@ -358,12 +358,24 @@
                 
               
 
-              <time title="创建时间：2019-05-11 09:47:00 / 修改时间：14:37:40" itemprop="dateCreated datePublished" datetime="2019-05-11T09:47:00+08:00">2019-05-11</time>
+              <time title="创建时间：2019-05-11 09:47:00" itemprop="dateCreated datePublished" datetime="2019-05-11T09:47:00+08:00">2019-05-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-12 14:30:11" itemprop="dateModified" datetime="2019-05-12T14:30:11+08:00">2019-05-12</time>
               
             
           </span>
@@ -427,7 +439,20 @@
 <h5 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h5><blockquote>
 <p>push()方法从数组末端添加项，可一次性添加多个，并返回修改后数组的长度<br>pop()方法从数组末端移除项，一次只可移除一个并返回移除的项的值<br>unshift()方法从数组前端添加项，可一次性添加多个，并返回修改后数组的长度<br>shift()方法从数组前端移除项，一次只可移除一个并返回移除的项的值</p>
 </blockquote>
-
+<h5 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h5><p>concat()方法可以基于当前数组中的所有项创建一个新数组。具体来说，这个方法会先创建当前数组的一个副本，然后将接收到的参数添加到这个副本的末尾，最后返回新构建的数组。在没有给concat()方法传递参数的情况下，它只是复制当前数组并返回副本。如果传给concat()方法的是一个或多个数组，则该方法会将这些数组中的每一项都添加到结果数组中。如果传递的不是数组，这些值就会被简单地添加到结果数组的末尾。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=[<span class="string">"red"</span>,<span class="string">"green"</span>,<span class="string">"blue"</span>];</span><br><span class="line"><span class="keyword">var</span> colors2=colors.concat(<span class="string">"yellow"</span>,[<span class="string">"black"</span>,<span class="string">"brown"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(colors); <span class="comment">//red,green,blue</span></span><br><span class="line"><span class="built_in">console</span>.log(colors2); <span class="comment">//red,green,blue,yellow,black,brown</span></span><br></pre></td></tr></table></figure>
+<p>slice()方法能够基于当前数组中的一个或多个项创建一个新数组。slice()方法可以接受一个或两个参数，即要返回项的起始和结束位置。<br>在只有一个参数的情况下，slice()方法返回从该参数指定位置开始到当前数组末尾的所有项。如果有两个参数，该方法返回起始和结束位置之间的项，但不包括结束位置的项。注意！slice()方法不会影响原数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=[<span class="string">"red"</span>,<span class="string">"green"</span>,<span class="string">"blue"</span>,<span class="string">"yellow"</span>,<span class="string">"purple"</span>];</span><br><span class="line"><span class="keyword">var</span> colors2=colors.slice(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> colors3=colors.slice(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(colors); <span class="comment">//"red", "green", "blue", "yellow", "purple"</span></span><br><span class="line"><span class="built_in">console</span>.log(colors2); <span class="comment">//"green", "blue", "yellow", "purple"</span></span><br><span class="line"><span class="built_in">console</span>.log(colors3); <span class="comment">//"green", "blue", "yellow"</span></span><br></pre></td></tr></table></figure>
+<p>splice()方法有多种用法。其主要用途是向数组的中部插入项，但使用这种方法的方式则有如下3种。</p>
+<blockquote>
+<ul>
+<li><strong>删除</strong>：可以删除任意数量的项，只需指定2个参数：要删除的第一项的位置和要删除的项数。例如，splice(0,2)会删除数组中的前两项。</li>
+<li><strong>插入</strong>：可以向指定位置插入任意数量的项，只需提供3个参数：起始位置、0（要删除的项数）和要插入的项。如果要插入多个项，可以再传入第四、第五，以至任意多个项。例如，splice(2,0,”red”,”green”)会从当前数组的位置2开始插入字符串”red”和”green”。</li>
+<li><strong>替换</strong>：可以向指定位置插入任意数量的项，且同时删除任意数量的项，只需指定3个参数：起始位置、要删除的项数和要插入的任意数量的项。插入的项数不必与删除的项数相等。例如，splice(2,1,”red”,”green”)会删除当前数组位置2的项，然后再从位置2开始插入字符串”red”和”green”。</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors=[<span class="string">"red"</span>,<span class="string">"green"</span>,<span class="string">"blue"</span>];</span><br><span class="line"><span class="keyword">var</span> removed=colors.splice(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(colors); <span class="comment">//"green", "blue"</span></span><br><span class="line"><span class="built_in">console</span>.log(removed); <span class="comment">//"red"</span></span><br><span class="line">removed=colors.splice(<span class="number">1</span>,<span class="number">0</span>,<span class="string">"yellow"</span>,<span class="string">"orange"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(colors); <span class="comment">//"green", "yellow", "orange", "blue"</span></span><br><span class="line"><span class="built_in">console</span>.log(removed); <span class="comment">//空数组</span></span><br><span class="line">removed=colors.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">"red"</span>,<span class="string">"purple"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(colors); <span class="comment">//"green", "red", "purple", "orange", "blue"</span></span><br><span class="line"><span class="built_in">console</span>.log(removed); <span class="comment">//"yellow"</span></span><br></pre></td></tr></table></figure>
+<h5 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h5>
       
     </div>
 
@@ -702,7 +727,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#转换方法"><span class="nav-number">1.0.1.</span> <span class="nav-text">转换方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#栈方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">栈方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#队列方法"><span class="nav-number">1.0.3.</span> <span class="nav-text">队列方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小结"><span class="nav-number">1.0.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#转换方法"><span class="nav-number">1.0.1.</span> <span class="nav-text">转换方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#栈方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">栈方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#队列方法"><span class="nav-number">1.0.3.</span> <span class="nav-text">队列方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#小结"><span class="nav-number">1.0.4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作方法"><span class="nav-number">1.0.5.</span> <span class="nav-text">操作方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位置方法"><span class="nav-number">1.0.6.</span> <span class="nav-text">位置方法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
