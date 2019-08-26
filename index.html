@@ -311,6 +311,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/08/20/bugInWork/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/uploads/avatar.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syasusu's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/20/bugInWork/" class="post-title-link" itemprop="url">前端除虫记</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-20 10:29:00 / 修改时间：15:15:17" itemprop="dateCreated datePublished" datetime="2019-08-20T10:29:00+08:00">2019-08-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>前几天，在工作中遇到了一个业务上的bug，具体情境就是，在一个页面对表格进行还原数据后，切换到表格页，依旧显示还原前的数据，刷新一下才会正常。</p>
+<p>页面组件的结构如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── ReportStep.vue</span><br><span class="line">│   └── Profile.vue</span><br><span class="line">│       └── Profile.vue</span><br><span class="line">│           └── PubVerCard.vue</span><br><span class="line">└── TableStep.vue</span><br><span class="line">    └── TableDesigner.vue</span><br></pre></td></tr></table></figure>
+<p>其中在ReportStep中创建了一个Vuex实例，Profile中也创建了一个Vuex实例。</p>
+<p>还原数据的操作在PubVerCard中，还原后会执行<code>this.$store.commit(&#39;init&#39;,response.body)</code></p>
+<p>表格在TableStep页面中的TableDesigner中，TableDesigner中有一个计算属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">computed: mapState(&#123;</span><br><span class="line">            columnConfigs: <span class="function"><span class="params">state</span> =&gt;</span> state.table.config.columnConfigs,</span><br><span class="line">            tableConfig: <span class="function"><span class="params">state</span> =&gt;</span> state.table.config</span><br><span class="line">          &#125;),</span><br></pre></td></tr></table></figure>
+<p>Profile创建的实例将ReportStep中的实例覆盖了，导致PubVerCard中还原的数据只把Profile中的数据还原了，而表格的数据是从ReportStep中获取的，所以只是在切换路由的时候，不会触发ReportStep中的created，故切换回去时，数据还是还原之前的数据。</p>
+<p>当刷新时，ReportStep重新加载，触发created，使整个页面从后台重新获取数据，导致数据又恢复正常。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/08/19/tryMock/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -356,12 +507,24 @@
                 
               
 
-              <time title="创建时间：2019-08-19 10:29:00 / 修改时间：10:34:21" itemprop="dateCreated datePublished" datetime="2019-08-19T10:29:00+08:00">2019-08-19</time>
+              <time title="创建时间：2019-08-19 10:29:00" itemprop="dateCreated datePublished" datetime="2019-08-19T10:29:00+08:00">2019-08-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-20 14:59:27" itemprop="dateModified" datetime="2019-08-20T14:59:27+08:00">2019-08-20</time>
               
             
           </span>
@@ -400,9 +563,7 @@
             <p>再也不想撸完页面然后摸鱼半天只为了等后端的数据了，咱们自己也可以造数据！</p>
 <p>安装方法什么的就不讲了，都知道的，我贴一下如何配置吧。</p>
 <p>项目结构：</p>
-<blockquote>
-<p>.<br>├── README.md<br>├── build<br>│   ├── build.js<br>│   ├── check-versions.js<br>│   ├── logo.png<br>│   ├── utils.js<br>│   ├── vue-loader.conf.js<br>│   ├── webpack.base.conf.js<br>│   ├── webpack.dev.conf.js<br>│   └── webpack.prod.conf.js<br>├── config<br>│   ├── dev.env.js<br>│   ├── index.js<br>│   └── prod.env.js<br>├── index.html<br>├── package-lock.json<br>├── package.json<br>├── src<br>│   ├── App.vue<br>│   ├── assets<br>│   │   └── logo.png<br>│   ├── components<br>│   │   └── HelloWorld.vue<br>│   ├── main.js<br>│   ├── mock<br>│   │   └── index.js<br>│   ├── router<br>│   │   └── index.js<br>│   └── test.vue<br>└── static</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── README.md</span><br><span class="line">├── build</span><br><span class="line">│   ├── build.js</span><br><span class="line">│   ├── check-versions.js</span><br><span class="line">│   ├── logo.png</span><br><span class="line">│   ├── utils.js</span><br><span class="line">│   ├── vue-loader.conf.js</span><br><span class="line">│   ├── webpack.base.conf.js</span><br><span class="line">│   ├── webpack.dev.conf.js</span><br><span class="line">│   └── webpack.prod.conf.js</span><br><span class="line">├── config</span><br><span class="line">│   ├── dev.env.js</span><br><span class="line">│   ├── index.js</span><br><span class="line">│   └── prod.env.js</span><br><span class="line">├── index.html</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.vue</span><br><span class="line">│   ├── assets</span><br><span class="line">│   │   └── logo.png</span><br><span class="line">│   ├── components</span><br><span class="line">│   │   └── HelloWorld.vue</span><br><span class="line">│   ├── main.js</span><br><span class="line">│   ├── mock</span><br><span class="line">│   │   └── index.js</span><br><span class="line">│   ├── router</span><br><span class="line">│   │   └── index.js</span><br><span class="line">│   └── test.vue</span><br><span class="line">└── static</span><br></pre></td></tr></table></figure>
 <p>在 src 文件夹下新建一个mock文件夹，再在文件夹里新建一个index.js，内容为：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Mock <span class="keyword">from</span> <span class="string">'mockjs'</span> <span class="comment">// 引入mockjs</span></span><br><span class="line"><span class="keyword">const</span> Random = Mock.Random <span class="comment">// Mock.Random 是一个工具类，用于生成各种随机数据</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">    <span class="string">'sstr'</span>: Random.string(<span class="number">2</span>,<span class="number">10</span>),</span><br><span class="line">    <span class="string">'nnum'</span>: Random.integer(<span class="number">1</span>,<span class="number">100</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Mock.mock(<span class="string">'/data/index'</span>, <span class="string">'get'</span>, data) <span class="comment">// 根据数据模板生成模拟数据</span></span><br></pre></td></tr></table></figure>
 <p>再在main.js中加一条<code>require(&#39;./mock&#39;);</code></p>
@@ -1830,175 +1991,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/01/14/ETtoLT/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/14/ETtoLT/" class="post-title-link" itemprop="url">尝试找出ET和LT的换算关系</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-14 22:45:00" itemprop="dateCreated datePublished" datetime="2019-01-14T22:45:00+08:00">2019-01-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-11 14:13:18" itemprop="dateModified" datetime="2019-03-11T14:13:18+08:00">2019-03-11</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一到考试周就不想复习，想敲代码，这一次也不例外。</p>
-<p>这次想着做一个狒狒4.4新版本的限时采集计算器，每次上线想采集还要再打开wiki看一下真的好烦的【躺</p>
-<p>如果能做一个本地计算的就舒服了</p>
-<p>之前在研究天气预报的时候，知道了ET和LT之间是满足一定关系的，天气预报也是通过像是一种seed的一个区间来进行播报的</p>
-<p>众所周知，艾欧泽亚的限时采集点一般都刷在ET的整点，那么就有了以下思路</p>
-<p><strong>输入当前时间戳，通过ET和LT的关系，计算出ET，然后去匹配是在哪个限时采集点的区间内，再返回采集点地图和坐标</strong></p>
-<p>然后就再去看了一下獭獭机器人的关于天气预报方面的代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calculateForecastTarget</span><span class="params">(unixSeconds)</span>:</span> </span><br><span class="line">    <span class="comment"># Thanks to Rogueadyn's SaintCoinach library for this calculation.</span></span><br><span class="line">    <span class="comment"># lDate is the current local time.</span></span><br><span class="line">    <span class="comment"># Get Eorzea hour for weather start</span></span><br><span class="line">    bell = unixSeconds / <span class="number">175</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Do the magic 'cause for calculations 16:00 is 0, 00:00 is 8 and 08:00 is 16</span></span><br><span class="line">    increment = int(bell + <span class="number">8</span> - (bell % <span class="number">8</span>)) % <span class="number">24</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Take Eorzea days since unix epoch</span></span><br><span class="line">    totalDays = unixSeconds // <span class="number">4200</span></span><br><span class="line">    <span class="comment"># totalDays = (totalDays &lt;&lt; 32) &gt;&gt;&gt; 0; # Convert to uint</span></span><br><span class="line"></span><br><span class="line">    calcBase = totalDays * <span class="number">100</span> + increment</span><br><span class="line"></span><br><span class="line">    step1 = (((calcBase &lt;&lt; <span class="number">11</span>)%(<span class="number">0x100000000</span>)) ^ calcBase)</span><br><span class="line">    step2 = (((step1 &gt;&gt; <span class="number">8</span>)%(<span class="number">0x100000000</span>)) ^ step1)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> step2 % <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getEorzeaHour</span><span class="params">(unixSeconds)</span>:</span></span><br><span class="line">    bell = (unixSeconds / <span class="number">175</span>) % <span class="number">24</span></span><br><span class="line">    <span class="keyword">return</span> int(bell)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getWeatherTimeFloor</span><span class="params">(unixSeconds)</span>:</span></span><br><span class="line">    <span class="comment"># Get Eorzea hour for weather start</span></span><br><span class="line">    bell = (unixSeconds / <span class="number">175</span>) % <span class="number">24</span></span><br><span class="line">    startBell = bell - (bell % <span class="number">8</span>)</span><br><span class="line">    startUnixSeconds = round(unixSeconds - (<span class="number">175</span> * (bell - startBell)))</span><br><span class="line">    <span class="keyword">return</span> startUnixSeconds</span><br></pre></td></tr></table></figure>
-<p>写了个main，然后输入当前时间看了下输出，<code>getEorzeaHour</code>可以得到ET时间的小时，<code>getWeatherTimeFloor</code>大概是返回当前天气的起始时间戳？<code>calculateForecastTarget</code>输出时报错，但猜测是计算当前时间的天气seed？</p>
-<p>这样一来，输入当前时间，再用<code>getEorzeaHour</code>计算出ET时间，判断是否在限时采集的时间区间内。</p>
-<p>但在如何返回一个采集点的LT时间区间上发了糊涂，想半天绕不过来，算了半天时间戳还发现差八个小时，后来查了之后才知道时间戳的起始时间是<strong>格林威治时间</strong>的<code>1970.01.01 00:00</code>，换算成北京时间要+8。</p>
-<p>就当给自己留个坑吧，考完试再想想。</p>
-<p>数字信号！电磁场！爱我一次！</p>
-<p>喔，今天还顺带修了一个博客的bug，之前的tags页面下面有那个评论框，一直不知道咋消掉，以为是主题文件的bug，差点就去提issue了，后来发现是当初创建tags页面的时候忘了关评论，加上一条<code>comments: false</code>就成了。</p>
-<p><del>然后我还发现自己的博客没有备份，什么时候想起来再搞了，应该不会出什么意外吧【口住！</del></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2049,7 +2041,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
