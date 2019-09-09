@@ -101,12 +101,12 @@
 
 
   <meta property="og:type" content="website">
-<meta property="og:title" content="Syasusu&#39;s Blog">
+<meta property="og:title" content="Syasu&#39;s Blog">
 <meta property="og:url" content="https://ericwww.github.io/index.html">
-<meta property="og:site_name" content="Syasusu&#39;s Blog">
+<meta property="og:site_name" content="Syasu&#39;s Blog">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Syasusu&#39;s Blog">
+<meta name="twitter:title" content="Syasu&#39;s Blog">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Syasusu's Blog</title>
+  <title>Syasu's Blog</title>
   
 
 
@@ -184,7 +184,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Syasusu's Blog</span>
+        <span class="site-title">Syasu's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -311,16 +311,183 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/08/20/bugInWork/"/>
+    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/09/09/dht11/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/09/dht11/" class="post-title-link" itemprop="url">利用dht11与Raspberry Pi构建温湿度监控平台</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-09 10:29:00 / 修改时间：14:31:47" itemprop="dateCreated datePublished" datetime="2019-09-09T10:29:00+08:00">2019-09-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这次学校短学期的课题是利用dht11与树莓派做一个温湿度监控平台，要求能实现实时显示，查询历史，定时浇灌，报警等功能。</p>
+<h2 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h2><p>dht11是一款有已校准数字信号输出的温湿度传感器。 其精度湿度+-5%RH， 温度+-2°C，量程湿度20-90%RH， 温度0~50°C。</p>
+<p><img src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/crop%3D0%2C170%2C1000%2C658%3Bc0%3Dbaike116%2C5%2C5%2C116%2C38/sign=8bd57c60ff36afc31a4365258e29c7f5/f2deb48f8c5494ee78853eb925f5e0fe98257eee.jpg" height="50%" width="50%"></p>
+<p>首先我们要从dht11上读出温湿度，dht11分别有3个引脚，分别为VCC、GND和DOUT，DOUT为数据输出的引脚。</p>
+<p>树莓派引脚图</p>
+<p><img src="http://shumeipai.nxez.com/wp-content/uploads/2015/03/rpi-pins-40-0.png" alt="树莓派引脚图"></p>
+<p>我们将DOUT接在物理引脚7脚上，代码如下</p>
+<p>因为我们选了BCM模式，所以代码中的引脚编号是4</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dht11.py</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> GPIO</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calTemp</span><span class="params">()</span>:</span></span><br><span class="line">    channel = <span class="number">4</span></span><br><span class="line">    data = []</span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    GPIO.setmode(GPIO.BCM)</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    GPIO.setup(channel, GPIO.OUT)</span><br><span class="line">    GPIO.output(channel, GPIO.LOW)</span><br><span class="line">    time.sleep(<span class="number">0.02</span>)</span><br><span class="line">    GPIO.output(channel, GPIO.HIGH)</span><br><span class="line">    GPIO.setup(channel, GPIO.IN)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> GPIO.input(channel) == GPIO.LOW:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">while</span> GPIO.input(channel) == GPIO.HIGH:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> j &lt; <span class="number">40</span>:</span><br><span class="line">        k = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> GPIO.input(channel) == GPIO.LOW:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">while</span> GPIO.input(channel) == GPIO.HIGH:</span><br><span class="line">            k += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> k &gt; <span class="number">100</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> k &lt; <span class="number">8</span>:</span><br><span class="line">            data.append(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            data.append(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        j += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    humidity_bit = data[<span class="number">0</span>:<span class="number">8</span>]</span><br><span class="line">    humidity_point_bit = data[<span class="number">8</span>:<span class="number">16</span>]</span><br><span class="line">    temperature_bit = data[<span class="number">16</span>:<span class="number">24</span>]</span><br><span class="line">    temperature_point_bit = data[<span class="number">24</span>:<span class="number">32</span>]</span><br><span class="line">    check_bit = data[<span class="number">32</span>:<span class="number">40</span>]</span><br><span class="line"></span><br><span class="line">    humidity = <span class="number">0</span></span><br><span class="line">    humidity_point = <span class="number">0</span></span><br><span class="line">    temperature = <span class="number">0</span></span><br><span class="line">    temperature_point = <span class="number">0</span></span><br><span class="line">    check = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>):</span><br><span class="line">        humidity += humidity_bit[i] * <span class="number">2</span> ** (<span class="number">7</span> - i)</span><br><span class="line">        humidity_point += humidity_point_bit[i] * <span class="number">2</span> ** (<span class="number">7</span> - i)</span><br><span class="line">        temperature += temperature_bit[i] * <span class="number">2</span> ** (<span class="number">7</span> - i)</span><br><span class="line">        temperature_point += temperature_point_bit[i] * <span class="number">2</span> ** (<span class="number">7</span> - i)</span><br><span class="line">        check += check_bit[i] * <span class="number">2</span> ** (<span class="number">7</span> - i)</span><br><span class="line"></span><br><span class="line">    tmp = humidity + humidity_point + temperature + temperature_point</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> check == tmp:</span><br><span class="line">        <span class="comment"># print "temperature :", temperature, "*C, humidity :", humidity, "%"</span></span><br><span class="line">		    <span class="keyword">return</span> &#123;<span class="string">'datetime'</span>:int(time.time()),<span class="string">'temperature'</span> : temperature,<span class="string">'humidity'</span> :humidity,&#125;</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># print "wrong"</span></span><br><span class="line">        <span class="comment"># print "temperature :", temperature, "*C, humidity :", humidity, "% check :", check, ", tmp :", tmp</span></span><br><span class="line">		    <span class="keyword">return</span> &#123;<span class="string">'datetime'</span>:int(time.time()),<span class="string">'temperature'</span> : temperature,<span class="string">'humidity'</span> :humidity,<span class="string">'error'</span>:<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">    GPIO.cleanup()</span><br></pre></td></tr></table></figure>
+<h2 id="硬件-1"><a href="#硬件-1" class="headerlink" title="硬件"></a>硬件</h2><p>好了，温度读取完成了，该思考怎么把数据反馈到网页上了，老师建议我们用Flask来做，并给了我们一份材料。材料中给的范例是在拿到温湿度数据后，利用<code>render_template</code>，把数据传进网页，如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route("/")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></span><br><span class="line">    templateData=dht11();</span><br><span class="line">    templateData=&#123;</span><br><span class="line">    	<span class="string">'temperature'</span> : <span class="number">23</span>,</span><br><span class="line">    	<span class="string">'humidity'</span> :<span class="number">30</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">"index.html"</span>, **templateData)</span><br></pre></td></tr></table></figure>
+<p>这时我想，既然都用到Flask了，为何不能做一下前后端分离呢？</p>
+<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><p>上网查了一下利用Flask架设后端服务器的相关知识，写了一个获取温湿度数据的接口。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route("/getData", methods=['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">()</span>:</span></span><br><span class="line">    response=dht11.calTemp()</span><br><span class="line">    <span class="keyword">return</span> jsonify(response)</span><br></pre></td></tr></table></figure>
+<p>历史查询功能，乍一想可能需要上个数据库，但无奈技艺不精，选择了将数据保存在json文件中去进行反复的读写。</p>
+<p>同时新增了一个历史查询的接口。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route("/getData", methods=['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">()</span>:</span></span><br><span class="line">    list=[]</span><br><span class="line">    response=dht11.calTemp()</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"./data.json"</span>,<span class="string">'r+'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">if</span> os.path.getsize(<span class="string">'./data.json'</span>)==<span class="number">0</span>:</span><br><span class="line">            list.append(response)</span><br><span class="line">            json.dump(list,f)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            list=json.load(f)</span><br><span class="line">            list.append(response)</span><br><span class="line">            f.seek(<span class="number">0</span>)</span><br><span class="line">            f.truncate()</span><br><span class="line">            json.dump(list,f)</span><br><span class="line">    <span class="keyword">return</span> jsonify(response)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route("/getHistory", methods=['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">history</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"./data.json"</span>,<span class="string">'r+'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        res=json.load(f)</span><br><span class="line">    <span class="keyword">return</span> jsonify(res)</span><br></pre></td></tr></table></figure>
+<p>还有一个定时浇灌的功能，我们用led灯去模拟浇灌系统，由前端传一个时间戳和浇灌时间，然后进入一个死循环，去判断设定时间和当前时间是否相等，再进行浇灌。</p>
+<p>这里涉及到一个问题，进入死循环后，其他操作无法进行，整个程序会卡死在这一步直到到达预定的时间，一开始以为可以用多线程来解决，就去看了一下thread，后来操作了一下发现还是无解。之后经老师指点，建议我使用多进程试一试，便用了<code>multiprocessing</code>实现多进程，可以在进入死循环的同时，其余功能也正常运行。</p>
+<p>之后这里还有一个小问题，传回来的时间戳和python自己获取当前时间的时间戳貌似很难相等，猜测应该是程序本身运行也需要时间，无法做到如此精确，便更改了一下设计思路，前端传回设定时间和当前时间的时间差，然后进入程序后先sleep，再运行。</p>
+<p>具体代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route("/lightLed",methods=['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">light</span><span class="params">()</span>:</span></span><br><span class="line">    sleepTime=request.args.get(<span class="string">"sleepTime"</span>)</span><br><span class="line">    lightTime=request.args.get(<span class="string">"lightTime"</span>)</span><br><span class="line">    p=multiprocessing.Process(target=led.lightLED,args=(sleepTime,lightTime,))</span><br><span class="line">    p.start()</span><br><span class="line">    response=&#123;</span><br><span class="line">        <span class="string">'light'</span>:<span class="string">'true'</span>,</span><br><span class="line">        <span class="string">'sleeptime'</span>:sleepTime,</span><br><span class="line">        <span class="string">'lighttime'</span>:lightTime,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> jsonify(response)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> GPIO</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lightLED</span><span class="params">(sleepTime,lightTime)</span>:</span></span><br><span class="line">	  GPIO.setmode(GPIO.BCM)</span><br><span class="line">	  time.sleep(float(sleepTime)</span><br><span class="line">    GPIO.setup(<span class="number">27</span>, GPIO.OUT)</span><br><span class="line">    GPIO.output(<span class="number">27</span>, GPIO.HIGH)</span><br><span class="line">   	time.sleep(float(lightTime))</span><br><span class="line">    GPIO.output(<span class="number">27</span>, GPIO.LOW)</span><br><span class="line">	  time.sleep(<span class="number">1</span>)</span><br><span class="line">	  GPIO.cleanup()</span><br></pre></td></tr></table></figure>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><p>前端用了自己比较擅长的vue来写，界面如下</p>
+<p><img src="https://syasusu-blog-store.oss-cn-hangzhou.aliyuncs.com/dht11-1.png" height="50%" width="50%"><br><img src="https://syasusu-blog-store.oss-cn-hangzhou.aliyuncs.com/dht11-2.png" height="50%" width="50%"><br><img src="https://syasusu-blog-store.oss-cn-hangzhou.aliyuncs.com/dht11-3.png" height="50%" width="50%"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/08/20/bugInWork/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Syasu"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -465,13 +632,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/08/19/tryMock/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -630,13 +797,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/07/25/Recent1/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -791,13 +958,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/05/11/ArrayInJs/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -1000,13 +1167,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/05/06/VueLifecycle/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -1165,13 +1332,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/05/01/LoopInJs/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -1356,13 +1523,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/04/29/AbsoluteAndRelative/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -1499,13 +1666,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/04/15/InlineAndBlock/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -1672,13 +1839,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/03/30/Interview1/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -1825,172 +1992,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/03/11/TryBootstrap/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/11/TryBootstrap/" class="post-title-link" itemprop="url">使用Bootstrap美化往期作品</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-11 21:10:00" itemprop="dateCreated datePublished" datetime="2019-03-11T21:10:00+08:00">2019-03-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-13 10:29:02" itemprop="dateModified" datetime="2019-03-13T10:29:02+08:00">2019-03-13</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近在一脚一脚地踏入前端深坑，学到了Bootstrap，便想用这个来试试能不能把大一的时候做的三位一体计算器美化一下。</p>
-<p>之前的网页是这样的。</p>
-<p><img src="http://syasusu-blog-store.oss-cn-hangzhou.aliyuncs.com/TryBootstrap1.png" alt="以前的网页1"></p>
-<p><img src="http://syasusu-blog-store.oss-cn-hangzhou.aliyuncs.com/TryBootstrap2.png" alt="以前的网页2"></p>
-<p>当时也的确是查了各种文档，手撸CSS才写成这样的，但有点不符合现在的审美吧。</p>
-<p>index页面变化不大，就把按钮加了一下bootstrap提供的样式，然后做一下简单的排版就好了</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span>欢迎使用三位一体计算器<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h4</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span>距离2018年高考还有<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"text-center font-weight-bold"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"timer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"zhcj.html"</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"zhcj"</span> <span class="attr">class</span>=<span class="string">"btn btn-dark"</span>&gt;</span>计算综合成绩<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"gkcj.html"</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"gkcj"</span> <span class="attr">class</span>=<span class="string">"btn btn-dark"</span>&gt;</span>计算高考成绩<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="http://syasusu-blog-store.oss-cn-hangzhou.aliyuncs.com/TryBootstrap3.png" alt="现在的网页1"></p>
-<p>然后是计算页面，给所有的表单都加了<code>form-control</code>属性，但由于form-control的width是100%，只能给父级的div添加宽度控制的属性</p>
-<p>但后面又发现无法使表单居中，查了很多的资料，增增删删了很多样式，但都无法达到心里想的效果，挫败感xN</p>
-<p><img src="http://syasusu-blog-store.oss-cn-hangzhou.aliyuncs.com/TryBootstrap4.png" alt="现在的网页2"></p>
-<p>先放下代码吧，如果想到了解决办法，再回过头来改x</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline"</span> <span class="attr">id</span>=<span class="string">"form1"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-4 control-label"</span>&gt;</span></span><br><span class="line">				报考学校</span><br><span class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-8"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"university"</span>&gt;</span>…</span><br><span class="line">				<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline"</span> <span class="attr">id</span>=<span class="string">"form2"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-4 control-label"</span>&gt;</span></span><br><span class="line">				学考成绩</span><br><span class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-8"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text1"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-2"</span>&gt;</span>A</span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text2"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-2"</span>&gt;</span>B</span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text3"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-2"</span>&gt;</span>C</span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text4"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-2"</span>&gt;</span>D</span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline"</span> <span class="attr">id</span>=<span class="string">"form3"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-2 control-label"</span>&gt;</span>面试成绩<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text5"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-3"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-4 control-label"</span>&gt;</span>目标综合成绩<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text6"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-3"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline"</span> <span class="attr">id</span>=<span class="string">"form4"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"button1"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">value</span>=<span class="string">"计算高考成绩"</span> <span class="attr">onclick</span>=<span class="string">"calculate()"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"button2"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-danger"</span> <span class="attr">value</span>=<span class="string">"清除"</span> <span class="attr">onclick</span>=<span class="string">"delet()"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"index.html"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"button3"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-light"</span> <span class="attr">value</span>=<span class="string">"返回"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2027,10 +2028,10 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/uploads/avatar.png"
-                alt="Syasusu"/>
+                src="/images/avatar.png"
+                alt="Syasu"/>
             
-              <p class="site-author-name" itemprop="name">Syasusu</p>
+              <p class="site-author-name" itemprop="name">Syasu</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
@@ -2041,7 +2042,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2108,7 +2109,7 @@
                   
                     
                   
-                  <a href="mailto:syasusu@" title="E-Mail &rarr; mailto:syasusu@" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:syasusu@163.com" title="E-Mail &rarr; mailto:syasusu@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -2186,7 +2187,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Syasusu</span>
+  <span class="author" itemprop="copyrightHolder">Syasu</span>
 
   
 

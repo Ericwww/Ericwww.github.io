@@ -101,12 +101,12 @@
 
 
   <meta property="og:type" content="website">
-<meta property="og:title" content="Syasusu&#39;s Blog">
+<meta property="og:title" content="Syasu&#39;s Blog">
 <meta property="og:url" content="https://ericwww.github.io/page/2/index.html">
-<meta property="og:site_name" content="Syasusu&#39;s Blog">
+<meta property="og:site_name" content="Syasu&#39;s Blog">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Syasusu&#39;s Blog">
+<meta name="twitter:title" content="Syasu&#39;s Blog">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Syasusu's Blog</title>
+  <title>Syasu's Blog</title>
   
 
 
@@ -184,7 +184,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Syasusu's Blog</span>
+        <span class="site-title">Syasu's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -311,16 +311,182 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/01/14/ETtoLT/"/>
+    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/03/11/TryBootstrap/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/11/TryBootstrap/" class="post-title-link" itemprop="url">使用Bootstrap美化往期作品</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-11 21:10:00" itemprop="dateCreated datePublished" datetime="2019-03-11T21:10:00+08:00">2019-03-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-13 10:29:02" itemprop="dateModified" datetime="2019-03-13T10:29:02+08:00">2019-03-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近在一脚一脚地踏入前端深坑，学到了Bootstrap，便想用这个来试试能不能把大一的时候做的三位一体计算器美化一下。</p>
+<p>之前的网页是这样的。</p>
+<p><img src="http://syasusu-blog-store.oss-cn-hangzhou.aliyuncs.com/TryBootstrap1.png" alt="以前的网页1"></p>
+<p><img src="http://syasusu-blog-store.oss-cn-hangzhou.aliyuncs.com/TryBootstrap2.png" alt="以前的网页2"></p>
+<p>当时也的确是查了各种文档，手撸CSS才写成这样的，但有点不符合现在的审美吧。</p>
+<p>index页面变化不大，就把按钮加了一下bootstrap提供的样式，然后做一下简单的排版就好了</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span>欢迎使用三位一体计算器<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h4</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span>距离2018年高考还有<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"text-center font-weight-bold"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"timer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"zhcj.html"</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"zhcj"</span> <span class="attr">class</span>=<span class="string">"btn btn-dark"</span>&gt;</span>计算综合成绩<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"gkcj.html"</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"gkcj"</span> <span class="attr">class</span>=<span class="string">"btn btn-dark"</span>&gt;</span>计算高考成绩<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://syasusu-blog-store.oss-cn-hangzhou.aliyuncs.com/TryBootstrap3.png" alt="现在的网页1"></p>
+<p>然后是计算页面，给所有的表单都加了<code>form-control</code>属性，但由于form-control的width是100%，只能给父级的div添加宽度控制的属性</p>
+<p>但后面又发现无法使表单居中，查了很多的资料，增增删删了很多样式，但都无法达到心里想的效果，挫败感xN</p>
+<p><img src="http://syasusu-blog-store.oss-cn-hangzhou.aliyuncs.com/TryBootstrap4.png" alt="现在的网页2"></p>
+<p>先放下代码吧，如果想到了解决办法，再回过头来改x</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline"</span> <span class="attr">id</span>=<span class="string">"form1"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-4 control-label"</span>&gt;</span></span><br><span class="line">				报考学校</span><br><span class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-8"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"university"</span>&gt;</span>…</span><br><span class="line">				<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline"</span> <span class="attr">id</span>=<span class="string">"form2"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-4 control-label"</span>&gt;</span></span><br><span class="line">				学考成绩</span><br><span class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-8"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text1"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-2"</span>&gt;</span>A</span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text2"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-2"</span>&gt;</span>B</span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text3"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-2"</span>&gt;</span>C</span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text4"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-2"</span>&gt;</span>D</span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline"</span> <span class="attr">id</span>=<span class="string">"form3"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-2 control-label"</span>&gt;</span>面试成绩<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text5"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-3"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-4 control-label"</span>&gt;</span>目标综合成绩<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text6"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control col-3"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline"</span> <span class="attr">id</span>=<span class="string">"form4"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"button1"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">value</span>=<span class="string">"计算高考成绩"</span> <span class="attr">onclick</span>=<span class="string">"calculate()"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"button2"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-danger"</span> <span class="attr">value</span>=<span class="string">"清除"</span> <span class="attr">onclick</span>=<span class="string">"delet()"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"index.html"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"button3"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-light"</span> <span class="attr">value</span>=<span class="string">"返回"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2019/01/14/ETtoLT/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Syasu"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -483,13 +649,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2018/08/23/OneMonthAtBelfast/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -644,13 +810,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2018/03/11/ImageGeoTrans/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -805,13 +971,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2018/03/05/DeployShadowsocks/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -966,13 +1132,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2018/02/05/py2736Together/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -1127,13 +1293,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2018/01/29/FooterBottom/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -1276,13 +1442,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2018/01/13/TricolourLovestoryOfflineRepo/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -1437,13 +1603,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2017/12/29/BuildBlogWithHexo/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -1599,13 +1765,13 @@
     <link itemprop="mainEntityOfPage" href="https://ericwww.github.io/2017/11/02/Codewars1/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Syasusu"/>
+      <meta itemprop="name" content="Syasu"/>
       <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/uploads/avatar.png"/>
+      <meta itemprop="image" content="/images/avatar.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Syasusu's Blog"/>
+      <meta itemprop="name" content="Syasu's Blog"/>
     </span>
 
     
@@ -1778,10 +1944,10 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/uploads/avatar.png"
-                alt="Syasusu"/>
+                src="/images/avatar.png"
+                alt="Syasu"/>
             
-              <p class="site-author-name" itemprop="name">Syasusu</p>
+              <p class="site-author-name" itemprop="name">Syasu</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
@@ -1792,7 +1958,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1859,7 +2025,7 @@
                   
                     
                   
-                  <a href="mailto:syasusu@" title="E-Mail &rarr; mailto:syasusu@" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:syasusu@163.com" title="E-Mail &rarr; mailto:syasusu@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -1937,7 +2103,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Syasusu</span>
+  <span class="author" itemprop="copyrightHolder">Syasu</span>
 
   
 
@@ -2112,6 +2278,8 @@
 
   
   
+    
+      
     
       
     
