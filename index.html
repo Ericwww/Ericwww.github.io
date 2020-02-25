@@ -356,7 +356,7 @@
                 
               
 
-              <time title="创建时间：2020-02-25 21:15:00 / 修改时间：16:34:02" itemprop="dateCreated datePublished" datetime="2020-02-25T21:15:00+08:00">2020-02-25</time>
+              <time title="创建时间：2020-02-25 21:15:00 / 修改时间：16:36:49" itemprop="dateCreated datePublished" datetime="2020-02-25T21:15:00+08:00">2020-02-25</time>
             
 
             
@@ -476,16 +476,17 @@
 <blockquote>
 <p>display:none 会触发回流，而 visibility:hidden 只会触发重绘。</p>
 </blockquote>
-<p><strong>avaScript 编译执行</strong></p>
-<ol>
-<li>词法分析</li>
-</ol>
+<p><strong>JavaScript 编译执行</strong></p>
+<p>1.词法分析</p>
 <p>JS 脚本加载完毕后，会首先进入语法分析阶段，它首先会分析代码块的语法是否正确，不正确则抛出“语法错误”，停止执行。<br>几个步骤：</p>
 <p>分词，例如将var a = 2，，分成var、a、=、2这样的词法单元。<br>解析，将词法单元转换成抽象语法树（AST）。<br>代码生成，将抽象语法树转换成机器指令。</p>
-<ol>
-<li>预编译<br>JS 有三种运行环境：</li>
-</ol>
-<p>全局环境<br>函数环境<br>eval</p>
+<p>2.预编译</p>
+<p>JS 有三种运行环境：</p>
+<ul>
+<li>全局环境</li>
+<li>函数环境</li>
+<li>eval</li>
+</ul>
 <p>每进入一个不同的运行环境都会创建一个对应的执行上下文，根据不同的上下文环境，形成一个函数调用栈，栈底永远是全局执行上下文，栈顶则永远是当前执行上下文。<br>创建执行上下文<br>创建执行上下文的过程中，主要做了以下三件事：</p>
 <blockquote>
 <ul>
@@ -500,9 +501,7 @@
 <li>确定 This 指向</li>
 </ul>
 </blockquote>
-<ol>
-<li>执行</li>
-</ol>
+<p>3.执行</p>
 <p>虽然 JS 是单线程的，但实际上参与工作的线程一共有四个：</p>
 <p>其中三个只是协助，只有 JS 引擎线程是真正执行的</p>
 <blockquote>
@@ -519,7 +518,8 @@
 <li><strong>同步任务</strong>：按照顺序执行，只有前一个任务完成后，才能执行后一个任务</li>
 <li><strong>异步任务</strong>：不直接执行，只有满足触发条件时，相关的线程将该异步任务推进任务队列中，等待JS引擎主线程上的任务执行完毕时才开始执行，例如异步Ajax、DOM事件，setTimeout等。</li>
 </ul>
-<p><em>微任务</em><br>微任务是ES6和Node环境下的，主要 API 有：Promise，process.nextTick。<br>微任务的执行在宏任务的同步任务之后，在异步任务之前。</p>
+<p><em>微任务</em></p>
+<p>微任务是ES6和Node环境下的，主要 API 有：Promise，process.nextTick。<br>微任务的执行在宏任务的同步任务之后，在异步任务之前。</p>
 
           
         
